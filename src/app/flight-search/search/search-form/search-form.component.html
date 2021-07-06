@@ -1,0 +1,46 @@
+<form class="search-form" [formGroup]="searchForm" (ngSubmit)="submitForm()">
+  <mat-form-field class="form-field" appearance="fill">
+    <mat-label class="label required-label">Wylot</mat-label>
+    <mat-select formControlName="cityOfDeparture">
+      <mat-option *ngFor="let airport of airports" [value]="airport.shortName">
+        {{airport | airportName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form-field" appearance="fill">
+    <mat-label class="label required-label">Powrót</mat-label>
+    <mat-select formControlName="cityOfArrival">
+      <mat-option *ngFor="let airport of airports" [value]="airport.shortName">
+        {{airport | airportName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form-field" appearance="fill">
+    <mat-label class="label required-label">Data wylotu</mat-label>
+    <input matInput formControlName="departureDate" [ngxMatDatetimePicker]="departureDatepicker">
+    <mat-datepicker-toggle matSuffix [for]="$any(departureDatepicker)"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker [showSeconds]="false" #departureDatepicker>
+      <ng-template>
+        <span>OK</span>
+      </ng-template>
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+
+  <mat-form-field class="form-field" [class.mat-form-field-invalid]="searchForm.errors?.invalidReturnDate" appearance="fill">
+    <mat-label class="label">Data powrotu</mat-label>
+    <input matInput formControlName="returnDate" [ngxMatDatetimePicker]="returnDatePicker">
+    <mat-datepicker-toggle matSuffix [for]="$any(returnDatePicker)"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker [showSeconds]="false" #returnDatePicker>
+      <ng-template>
+        <span>OK</span>
+      </ng-template>
+    </ngx-mat-datetime-picker>
+  </mat-form-field>
+
+  <button type="submit" class="submit-btn" [disabled]="!searchForm.valid" *ngIf="!isReservationForm">
+    <mat-icon class="submit-icon">search</mat-icon>
+  </button>
+ 
+</form>

@@ -1,0 +1,42 @@
+<form class="reservation-form" [formGroup]="reservationForm" (ngSubmit)="submitForm()">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Imię*</mat-label>
+    <input matInput placeholder="Wpisz imię" formControlName="firstName">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nazwisko*</mat-label>
+    <input matInput placeholder="Wpisz nazwisko" formControlName="lastName">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Ilość osób*</mat-label>
+    <input matInput formControlName="peopleNumber" type="number">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Klasa*</mat-label>
+    <mat-select formControlName="class">
+      <mat-option *ngFor="let class of ['Biznesowa', 'Ekonomiczna']" [value]="class">
+        {{class}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Miejsce wylotu</mat-label>
+    <input matInput formControlName="cityOfDeparture">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Powrót z</mat-label>
+    <input matInput formControlName="cityOfArrival">
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Data i godzina wylotu</mat-label>
+    <input matInput formControlName="departureDate">
+    <mat-icon matSuffix>calendar_today</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Data i godzina przylotu</mat-label>
+    <input matInput formControlName="returnDate">
+    <mat-icon matSuffix>calendar_today</mat-icon>
+  </mat-form-field>
+
+  <button class="submit-btn" type="submit" [disabled]="!reservationForm.valid">dodaj do koszyka</button>
+</form>

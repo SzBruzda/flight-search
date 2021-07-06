@@ -1,0 +1,23 @@
+@import "src/variables";
+
+:host {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+::ng-deep {
+  .mat-select-value, .mat-input-element {
+    color: $primary-blue;
+  } 
+  
+  .mat-form-field-flex {
+    border: 1px solid $primary-blue;
+  }
+
+  .mat-form-field-underline::before, .mat-form-field-underline {
+    display: none;
+  }
+}

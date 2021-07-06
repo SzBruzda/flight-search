@@ -1,0 +1,97 @@
+@import "src/variables";
+
+:host {
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: $primary-blue;
+  color: #FFF;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.nav-items-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  .nav-item {
+    background-color: $dark-blu;
+    color: #FFF;
+    margin-top: 6px;
+  }
+  
+  .nav-button {
+    border: none;
+    height: 36px;
+    width: 202px;
+    text-transform: uppercase;
+    position: relative;
+  }
+
+  .active::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 1px;
+    background-color: #FFF;
+  }
+  
+  .user-container{
+    display: flex;
+
+    & > :not(:first-child) {
+      margin-left: 6px;
+    }
+
+    .icon-container {
+      width: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .nav-icon {
+        font-size: 20px;
+        width: unset;
+        height: unset;
+      }
+    }
+    
+    .user-profile {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 36px;
+      width: 160px;
+      .user-name {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+    flex: 1;
+
+    .nav-item {
+      margin-top: 0;
+      
+      &:not(:first-of-type) {
+        margin-left: 6px;
+      }
+    }
+
+    .nav-button {
+      width: 160px;
+    }
+
+    .user-container {
+      margin-left: auto;
+    }
+  }
+}

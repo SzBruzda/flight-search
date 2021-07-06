@@ -1,0 +1,2 @@
+<h3 class="search-title">Wyszukaj loty</h3>
+<app-search-form [airports]="(availableAirports | async) || []" (searchFlights)="searchFlightsEmitted($event)"></app-search-form>

@@ -1,0 +1,32 @@
+
+<div class="reservation-container column">
+  <div class="title">
+    <h3 class="header">Rezerwacja lotu</h3>
+    <div class="airports">
+      <span>{{flightData?.cityOfDeparture?.shortName}}</span>
+      <mat-icon>compare_arrows</mat-icon>
+      <span>{{flightData?.cityOfArrival?.shortName}}</span>
+    </div>
+  </div>
+  
+  <app-reservation-form [flightData]="flightData"></app-reservation-form>
+</div>
+
+<div class="flights-list-container column">
+  <app-flights-list
+    [flights]="flights"
+    [loading]="flightsLoading"
+    [reservationView]="true"
+    (flightClicked)="refreshReservationData($event)">
+  </app-flights-list>
+
+  <button class="more-flights-btn" [disabled]="loadingButton" (click)="loadMoreFlights()">
+    <ng-container *ngIf="!(loadingButton || flightsLoading); else loadingTmpl">
+      Załaduj więcej
+    </ng-container>
+  </button>
+</div>
+
+<ng-template #loadingTmpl>
+  <mat-spinner mode="indeterminate" style="margin:0 auto;" [diameter]="28"></mat-spinner> 
+</ng-template>

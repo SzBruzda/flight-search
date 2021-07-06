@@ -1,0 +1,68 @@
+@import "src/variables";
+
+:host {
+  flex: 1;
+  overflow-y: scroll;
+
+  @media (min-width: 992px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.column {
+  margin: 12px;
+}
+
+.reservation-container {  
+  background-color: #F8F8F8;
+  padding: 18px;
+  height: max-content;
+
+  .title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    .header {
+      margin: 0;
+    }
+  
+    .airports {
+      display: flex;
+      justify-content: center;
+      font-size: 18px;
+      color: $primary-blue;
+    }
+  }
+}
+
+.flights-list-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 565px;
+  
+  .more-flights-btn {
+    background-color: $dark-blu;
+    margin-top: 12px;
+    align-self: center;
+    color: #FFF;
+    border: none;
+    height: 36px;
+    width: 202px;
+    text-transform: uppercase;
+    // display: flex;
+    // justify-content: center;
+    
+
+    &:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+  }
+}
+

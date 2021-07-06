@@ -1,0 +1,61 @@
+@import "src/variables";
+
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  background-color: #F8F8F8;
+}
+
+.responsive-container {
+  flex: 1;
+  position: relative;
+  overflow-y: scroll;
+
+  .flight-table {
+    width: 100%;
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    overflow-y: scroll;
+    .mat-column-id {
+      width: 48px;
+      .arrow-icon {
+        line-height: 24px;
+        text-align: center;
+        font-size: 18px;
+        margin-left: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.table-row:nth-of-type(2n+1) {
+  background-color: #fafafa;
+}
+
+.cover-info {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .cover-info-icon {
+    color: $primary-blue;
+    font-size: 48px;
+  }
+  .empty-query-info {
+    font-size: 24px;
+    margin-top: 12px;
+    text-align: center;
+  }
+}
+
+th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+  @media (max-width: 992px) {
+    padding-right: 12px;
+  }
+}

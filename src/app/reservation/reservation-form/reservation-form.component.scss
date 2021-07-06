@@ -1,0 +1,30 @@
+@import "src/variables";
+
+.reservation-form {
+  display: grid;
+  grid-template-rows: repeat(1fr, 9);
+  grid-template-columns: 1fr;
+  grid-gap: 8px;
+
+  @media (min-width: 600px) {
+    grid-template-rows: repeat(1fr, 5);
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px;
+  }
+
+  .submit-btn {
+    background-color: $dark-blu;
+    color: #FFF;
+    border: none;
+    height: 36px;
+    width: 202px;
+    text-transform: uppercase;
+    grid-column: 1 / -1;
+    justify-self: center;
+
+    &:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<h3>Lista lotów</h3>
+
+<ng-container *ngIf="flights; else emptyTable">
+  <div class="responsive-container">
+      <table mat-table [dataSource]="flights" class="flight-table">
+        <ng-container matColumnDef="cityOfDeparture">
+          <th mat-header-cell *matHeaderCellDef> Wylot z </th>
+          <td mat-cell *matCellDef="let element"> {{compactTable ?  element.cityOfDeparture.shortName : element.cityOfDeparture | airportName}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="cityOfArrival">
+          <th mat-header-cell *matHeaderCellDef> Wylot do </th>
+          <td mat-cell *matCellDef="let element"> {{compactTable ?  element.cityOfArrival.shortName : element.cityOfArrival | airportName }} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="departureDate">
+          <th mat-header-cell *matHeaderCellDef> Data wylotu </th>
+          <td mat-cell *matCellDef="let element"> {{element.departureDate | date:'dd.MM.YY HH.mm'}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="returnDate">
+          <th mat-header-cell *matHeaderCellDef> Data powrotu </th>
+          <td mat-cell *matCellDef="let element"> {{element.returnDate | date:'dd.MM.YY HH.mm'}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> Rezerwuj </th>
+          <td mat-cell *matCellDef="let element"> <mat-icon class="arrow-icon" (click)="goToReservation(element.id)">east</mat-icon> </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr class="table-row" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+</ng-container>
+
+<ng-template #emptyTable>
+  <div class="cover-info">
+    <ng-container [ngTemplateOutlet]="loading ? loadingTmpl : emptyQueryTmpl"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #emptyQueryTmpl>
+  <mat-icon class="cover-info-icon">search</mat-icon>
+  <span class="empty-query-info">Wprowadz dane lotu aby zobaczyć dostępne połączenia</span>
+</ng-template>
+
+<ng-template #loadingTmpl>
+  <mat-spinner></mat-spinner>
+</ng-template>
